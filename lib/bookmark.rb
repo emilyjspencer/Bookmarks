@@ -28,6 +28,16 @@ require_relative 'database_connection'
       DatabaseConnection.query("DELETE FROM bookmarks WHERE id = #{id}")
     end
 
+    def self.edit(id:, title:, url:)
+      result = DatabaseConnection.query("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = #{id} RETURNING id, title, url;")
+      Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
+    end 
+
+    def self.find(id:)
+      result =  DatabaseConnection.query("SELECT * FROM bookmarks WHERE id = #{id}")
+      Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
+    end 
+
 end 
 
   

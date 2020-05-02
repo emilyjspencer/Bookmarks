@@ -8,7 +8,7 @@ class BookmarkList < Sinatra::Base
 
 
   get '/' do
-    "Save all your favourite web pages!"
+    "Save all of your favourite web pages!"
   end 
 
   get '/bookmarks' do
@@ -26,8 +26,16 @@ class BookmarkList < Sinatra::Base
     redirect '/bookmarks'
   end
 
+  patch '/bookmarks/:id' do
+    Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
+    redirect '/bookmarks'
+  end 
 
-  
+  get '/bookmarks/:id/edit' do
+    @bookmark = Bookmark.find(id: params[:id])
+    erb(:'bookmarks/edit')
+  end 
+
 
   get '/bookmarks/new' do
     erb(:'bookmarks/new')
