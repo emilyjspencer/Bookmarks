@@ -1,4 +1,10 @@
-  
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body> 
+<div align="center" class="container">
 <ul>
 <% @bookmarks.each do |bookmark| %>
   <li class="bookmark" id="bookmark"><%= bookmark.id %></li>
@@ -12,7 +18,29 @@
     </li>
   <% end %>
 </ul>
+</div>
+<br>
+<br>
+<br>
 
+
+<style>
+
+body {
+  background-color: #d1d1e0;
+}
+
+ul { 
+    display: inline-block; 
+    text-align: left; 
+}
+
+
+
+</style>
+
+</body>
+</html>
 
 
 

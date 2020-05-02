@@ -23,6 +23,11 @@ require_relative 'database_connection'
         Bookmark.new(url: bookmark['url'], id: bookmark['id'], title: bookmark['title'])
       }
     end
+
+    def self.delete(id:)
+      DatabaseConnection.query("DELETE FROM bookmarks WHERE id = #{id}")
+    end
+
 end 
 
   
