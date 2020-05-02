@@ -1,4 +1,5 @@
 require 'pg'
+
 class DatabaseConnection 
 
    def self.establish_connection(dbname) 
