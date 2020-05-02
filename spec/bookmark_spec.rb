@@ -32,5 +32,23 @@ describe Bookmark do
     end 
   end 
 
+  describe '.find' do
+    it 'finds a bookmark by its id' do
+      bookmark = Bookmark.create(url: 'http://www.facebook.com', title: 'Facebook')
+      result = Bookmark.find(id: bookmark.id)
+      expect(result.id).to eq bookmark.id
+      expect(result.url).to eq 'http://www.facebook.com'
+    end
+  end 
+
+  describe '.edit' do 
+    it 'edits a bookmark' do
+      bookmark = Bookmark.create(url: 'http://www.facebook.com', title: 'Facebook')
+      edited_bookmark = Bookmark.edit(id: bookmark.id, title: 'Instagram', url: 'http://www.instagram.com')
+      expect(edited_bookmark.id).to eq bookmark.id
+      expect(edited_bookmark.url).to eq 'http://www.instagram.com'
+    end
+  end 
+
 
 end 
