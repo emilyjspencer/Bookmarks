@@ -1,12 +1,28 @@
+require_relative 'database_connection' 
 
 
-class Bookmark
-  def self.all
-     [
-        "https://www.theguardian.com/uk",
-        "https://www.bbc.co.uk/news",
-        "http://www.google.com"
-      
-     ]
-  end
-end
+
+  class Bookmark
+      attr_reader :id, :url, :title
+
+    def initialize(id:, url:, title:)
+      @id = id
+      @url = url
+      @title = title
+    end
+
+    def self.create(url:, title:)
+      result = DatabaseConnection.query("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}') RETURNING id, url, title;")
+      Bookmark.new(id: result[0]['id'], url: result[0]['url'], title: result[0]['title'])
+    end
+    
+
+    def self.all
+      bookmarks = DatabaseConnection.query('SELECT * FROM bookmarks;')
+      bookmarks.map { |bookmark|
+        Bookmark.new(url: bookmark['url'], id: bookmark['id'], title: bookmark['title'])
+      }
+    end
+end 
+
+  

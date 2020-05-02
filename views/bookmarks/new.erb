@@ -11,7 +11,10 @@
 <h3 align="center">Add a bookmark</h3>
 <div align="center" id="addbookmark">
 <form action="/bookmarks" method="post">
-<input type="text" name="url">
+<label for="title">Title</lable>
+<input type="title" name="title" placeholder="Please enter a title">
+<label for="url">Url</label>
+<input type="text" name="url" placeholder="Please enter a url">
 <input type="submit" value="Submit">
 </form>
 </div>
