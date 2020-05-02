@@ -6,6 +6,9 @@
 <body> 
 <div align="center" class="container">
 <ul>
+<div id="warning" align="center">
+  <%= flash[:notice] %>
+</div>
 <% @bookmarks.each do |bookmark| %>
   <li class="bookmark" id="bookmark"><%= bookmark.id %></li>
     <a href="<%= bookmark.url %>" target="_blank">
@@ -21,6 +24,11 @@
     </li>
   <% end %>
 </ul>
+<div align="center">
+<form action="/bookmarks/new">
+<input class="button" type="submit" value="Add a new bookmark">
+</form> 
+</div>
 </div>
 <br>
 <br>
@@ -36,6 +44,11 @@ body {
 ul { 
     display: inline-block; 
     text-align: left; 
+}
+
+#warning {
+    color: red;
+    font-size: 20px;
 }
 
 

@@ -21,6 +21,11 @@ describe Bookmark do
        expect(bookmark.id).to eq persisted_data.first['id'] 
        expect(bookmark.title).to eq 'Google'
      end 
+
+     it 'a bookmark is not created if the url is invalid' do
+        bookmark = Bookmark.create(title: 'Phoney', url: 'w.w.t.imafakeurl')
+        expect(bookmark).not_to be_a Bookmark
+     end
   end 
 
   describe '.delete' do
