@@ -18,6 +18,6 @@
       click_button('Submit')
       expect(current_path).to eq '/bookmarks'
       expect(page).not_to have_link(href: 'http://www.google.com')
-      expect(page).to have_link(href: 'http://www.insatgram.com')
+      expect(page).to have_link(href: 'http://www.instagram.com')
     end
   end
