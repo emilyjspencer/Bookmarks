@@ -23,5 +23,14 @@ describe Bookmark do
      end 
   end 
 
+  describe '.delete' do
+    it 'deletes a bookmark' do
+      bookmark = Bookmark.create(url: 'http://www.facebook.com', title: 'Facebook')
+      Bookmark.create(url:'http://ww.instagram.com',  title: 'Instagram')
+      Bookmark.delete(id: bookmark.id)
+      expect(bookmark.title).not_to eq 'Instagram'
+    end 
+  end 
+
 
 end 

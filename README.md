@@ -16,6 +16,10 @@ URLs.
  As a user,
  So I can retrieve my most-used websites at a later date,
  I want to to be able to store these websites 
+
+ As a user,
+ So I can remove my bookmark from the Bookmark Manager,
+ I want to delete a bookmark
  ```
 
 
