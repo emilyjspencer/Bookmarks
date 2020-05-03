@@ -32,7 +32,12 @@ URLs.
  As a user,
  So that I can describe what the bookmarks are
  I want to be able to add a comment or comments to a bookmark
+
+ As a user,
+ So that I can categorize my bookmarks,
+ I want to add a Tag to a Bookmark
  ```
+ 
 
 
 
@@ -88,6 +93,12 @@ Run the following migrations. which can be found in the db/migrations subfolder:
 ```html
  ALTER TABLE comments DROP COLUMN text;
 ```
+```html
+ CREATE TABLE tags(id SERIAL PRIMARY KEY, content VARCHAR(60));
+```
+```html
+ REATE TABLE bookmarks_tags(tag_id INTEGER REFERENCES tags (id), bookmark_id INTEGER REFERENCES bookmarks (id));
+``` 
 
 Repeat for the test database
 
