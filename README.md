@@ -97,7 +97,7 @@ Run the following migrations. which can be found in the db/migrations subfolder:
  CREATE TABLE tags(id SERIAL PRIMARY KEY, content VARCHAR(60));
 ```
 ```html
- REATE TABLE bookmarks_tags(tag_id INTEGER REFERENCES tags (id), bookmark_id INTEGER REFERENCES bookmarks (id));
+ CREATE TABLE bookmarks_tags(tag_id INTEGER REFERENCES tags (id), bookmark_id INTEGER REFERENCES bookmarks (id));
 ``` 
 
 Repeat for the test database
