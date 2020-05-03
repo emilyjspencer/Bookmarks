@@ -2,6 +2,7 @@ require 'bookmark'
 require 'database_helpers'
 
 describe Bookmark do
+  let(:comment_class) { double(:comment_class) }
 
   describe '.all' do
     it 'returns a list of bookmarks' do
@@ -54,6 +55,14 @@ describe Bookmark do
       expect(edited_bookmark.url).to eq 'http://www.instagram.com'
     end
   end 
+
+  describe '#add_comment' do
+    it 'calls .find_by_id on the Comment class' do
+      bookmark = Bookmark.create(title: 'Instagram', url: 'http://www.instagram.com')
+      expect(comment_class).to receive(:find_by_id).with(bookmark_id: bookmark.id)
+      bookmark.add_comment(comment_class)
+    end
+  end
 
 
 end 
