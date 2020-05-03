@@ -36,6 +36,10 @@ URLs.
  As a user,
  So that I can categorize my bookmarks,
  I want to add a tag to a bookmark
+
+ As a user,
+ So that I can find relevant bookmarks,
+ I want to filter my bookmarks by a tag
  ```
  
 
