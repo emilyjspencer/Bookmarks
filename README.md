@@ -35,7 +35,7 @@ URLs.
 
  As a user,
  So that I can categorize my bookmarks,
- I want to add a Tag to a Bookmark
+ I want to add a tag to a bookmark
  ```
  
 

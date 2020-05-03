@@ -2,6 +2,8 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require_relative 'lib/bookmark'
 require_relative 'lib/comment'
+require_relative './lib/tag'
+require_relative './lib/bookmark_tag'
 require_relative 'setup_database'
 require 'uri'
 
@@ -54,7 +56,16 @@ class BookmarkList < Sinatra::Base
     redirect '/bookmarks'
   end
 
+  get '/bookmarks/:id/tags/new' do
+    @bookmark_id = params[:id]
+    erb :'/tags/new'
+  end
 
+  post '/bookmarks/:id/tags' do
+    tag = Tag.create(content: params[:tag])
+    BookmarkTag.create(bookmark_id: params[:id], tag_id: tag.id)
+    redirect '/bookmarks'
+  end
 
 
 

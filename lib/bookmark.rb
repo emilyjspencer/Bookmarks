@@ -1,5 +1,6 @@
 require_relative 'database_connection' 
 require_relative 'comment'
+require_relative 'tag'
 require 'uri'
 
 
@@ -44,11 +45,14 @@ require 'uri'
       comment_class.find_by_id(bookmark_id: id)
     end
 
+    def add_tag(tag_class = Tag)
+      tag_class.find_by_id(bookmark_id: id)
+    end
+
     private
 
     def self.valid_url?(url)
       url =~ /\A#{URI::regexp(['http', 'https'])}\z/
-      #url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]
     end
 
 end 

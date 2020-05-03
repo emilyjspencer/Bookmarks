@@ -3,6 +3,7 @@ require 'database_helpers'
 
 describe Bookmark do
   let(:comment_class) { double(:comment_class) }
+  let(:tag_class) { double(:tag_class) }
 
   describe '.all' do
     it 'returns a list of bookmarks' do
@@ -61,6 +62,14 @@ describe Bookmark do
       bookmark = Bookmark.create(title: 'Instagram', url: 'http://www.instagram.com')
       expect(comment_class).to receive(:find_by_id).with(bookmark_id: bookmark.id)
       bookmark.add_comment(comment_class)
+    end
+  end
+
+  describe 'add_tag' do
+    it 'calls .find_by_id on the Tag class' do
+      bookmark = Bookmark.create(title: 'Instagram', url: 'http://www.instagram.com')
+      expect(tag_class).to receive(:find_by_id).with(bookmark_id: bookmark.id)
+      bookmark.add_tag(tag_class)
     end
   end
 
