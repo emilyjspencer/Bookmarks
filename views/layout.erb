@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>a Bookmark Manager</title>
+<link rel="stylesheet" type="text/css" href="<%= url("/style.css")%>">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="wrapper">
+     <header class="header">
+        Bookmark Manager
+       <span> <a href="/bookmarks/new" > new bookmark </a></span>
+     </header>
+     <div class="main">
+        <div id='index'>
+         <%= yield %>
+        </div>
+     </div> 
+     <footer>
+      <div id="footer1"></div>
+      <div id="footer2"></div>
+  </footer>
+</div>
+</body>
