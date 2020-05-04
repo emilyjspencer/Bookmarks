@@ -6,5 +6,5 @@ require 'pg'
 
    connection = PG.connect(dbname: 'bookmark_manager_new_test') 
 
-   connection.exec("TRUNCATE bookmarks, comments, tags, bookmarks_tags;") 
+   connection.exec("TRUNCATE bookmarks, comments, tags, bookmarks_tags; users") 
  end

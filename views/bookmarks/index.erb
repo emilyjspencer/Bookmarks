@@ -9,6 +9,9 @@
 <div id="warning" align="center">
   <%= flash[:notice] %>
 </div>
+<% if @user %>
+  <h1>Welcome, <%= @user.username%></h1>
+<% end %>
 <% @bookmarks.each do |bookmark| %>
   <li class="bookmark" id="bookmark"><%= bookmark.id %></li>
     <a href="<%= bookmark.url %>" target="_blank">

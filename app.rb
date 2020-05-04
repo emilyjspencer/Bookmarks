@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/flash'
+require_relative 'lib/user'
 require_relative 'lib/bookmark'
 require_relative 'lib/comment'
 require_relative './lib/tag'
@@ -64,6 +65,16 @@ class BookmarkList < Sinatra::Base
   post '/bookmarks/:id/tags' do
     tag = Tag.create(content: params[:tag])
     BookmarkTag.create(bookmark_id: params[:id], tag_id: tag.id)
+    redirect '/bookmarks'
+  end
+
+  get '/users/new' do
+    erb(:'users/new')
+  end
+
+  post '/users' do
+    user = User.create(username: params['username'], email: params['email'], password: params['password'])
+    session[:user_id] = user.id
     redirect '/bookmarks'
   end
 
