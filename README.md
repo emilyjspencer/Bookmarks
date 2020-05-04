@@ -42,8 +42,12 @@ URLs.
  I want to filter my bookmarks by a tag
 
  As a user,
+ So that I can have a personalised bookmark list,
+ I want to be able to sign up
+
+ As a user,
  So that I can keep my account secure,
- I want to sign in with my email and password
+ I want to be able to sign in
  ```
  
 
