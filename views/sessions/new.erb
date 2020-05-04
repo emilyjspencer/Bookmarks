@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Log In</title>
+</head>
+<body>
+<h2>
+<%= flash[:notice] %>
+</h2>
 <form action="/sessions" method="post">
   <input type="text" name="username" placeholder="Please enter a username">
   <input type="email" name="email" placeholder="Please enter an email">
@@ -15,3 +24,5 @@
 <input class="button" type="submit" value="Back to Bookmarks">
 </form> 
 </div>
+</body>
+</html>

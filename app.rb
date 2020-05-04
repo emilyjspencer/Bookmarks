@@ -18,8 +18,13 @@ class BookmarkList < Sinatra::Base
   
     post '/sessions' do
       user = User.authenticate(username: params[:username], email: params[:email], password: params[:password])
-      session[:user_id] = user.id
-      redirect('/bookmarks')
+      if user
+        session[:user_id] = user.id
+        redirect('/bookmarks')
+      else
+        flash[:notice] = 'Incorrect login information. Please try again.'
+        redirect('/sessions/new')
+      end
     end
 
   get '/' do

@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+</head>
+<body>
+<h2>
+<%= flash[:notice] %>
+</h2>
 <form method="post" action="/users">
   <label for="username">Username</label>
   <input type="text" name="username" placeholder="Please enter a username">
@@ -18,3 +27,5 @@
 <input class="button" type="submit" value="Back to Bookmarks">
 </form> 
 </div>
+</body>
+</html>
