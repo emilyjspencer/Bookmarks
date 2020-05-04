@@ -12,6 +12,15 @@ class BookmarkList < Sinatra::Base
     register Sinatra::Flash
     enable :sessions, :method_override
 
+    get '/sessions/new' do
+      erb(:'sessions/new')
+    end
+  
+    post '/sessions' do
+      user = User.authenticate(username: params[:username], email: params[:email], password: params[:password])
+      session[:user_id] = user.id
+      redirect('/bookmarks')
+    end
 
   get '/' do
     "Save all of your favourite web pages!"
