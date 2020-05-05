@@ -1,87 +1,69 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Home</title>
-</head>
-<body> 
-<div align="center" class="container">
+<form action="sessions/destroy" method="post">
+<input type="submit" value="Log out">
+</form>
 <ul>
-<div id="warning" align="center">
-  <%= flash[:notice] %>
+
+<form id="addbookmark" action="/bookmarks/new">
+<input type="submit" value="Add a new bookmark">
+</form> 
 </div>
-<% if @user %>
-  <h1>Welcome, <%= @user.username%></h1>
-<% end %>
 <% @bookmarks.each do |bookmark| %>
   <li class="bookmark" id="bookmark"><%= bookmark.id %></li>
     <a href="<%= bookmark.url %>" target="_blank">
-      <%= bookmark.title %>
+      <h2><%= bookmark.title %></h2>
     </a>
     <form action="/bookmarks/<%= bookmark.id %>" method="post">
       <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete">
+      <input type="submit" value="Click to delete">
     </form>
     <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
-      <input type="submit" value="Edit">
+      <input type="submit" value="Click to edit">
     </form>
     <form action="/bookmarks/<%= bookmark.id %>/comments/new" method="get">
     <input type="submit" value="Click to add a comment">
   </form>
   <form action="/bookmarks/<%= bookmark.id %>/tags/new" method="get">
-  <input type="submit" value="Add Tag" />
+  <input type="submit" value="Click to add tag">
 </form>
+<% if bookmark.add_comment.length > 0 %>
 <div>
   <h2>Comments</h2>
   <ul>
     <% bookmark.add_comment.each do |comment| %>
       <li><%= comment.description %></li>
+      <% end %>
+      </ul>
+      </div>
     <% end %>
-  </ul>
-</div>
+  <% if bookmark.add_tag.length > 0 %>
 <div>
   <h2>Tags</h2>
   <ul>
     <% bookmark.add_tag.each do |tag| %>
-      <li><%= tag.content %></li>
+      <li>
+      <a href="/tags/<= tag.id %>/bookmarks">
+      <%= tag.content %>
+      </a>
+      </li>
     <% end %>
   </ul>
 </div>
+<% end %>
     </li>
   <% end %>
 </ul>
-<div align="center">
-<form action="/bookmarks/new">
-<input class="button" type="submit" value="Add a new bookmark">
-</form> 
-</div>
+<h1>
+  <%= flash[:notice] %>
+</h1>
 </div>
 <br>
 <br>
 <br>
 
 
-<style>
-
-body {
-  background-color: #d1d1e0;
-}
-
-ul { 
-    display: inline-block; 
-    text-align: left; 
-}
-
-#warning {
-    color: red;
-    font-size: 20px;
-}
 
 
 
-</style>
-
-</body>
-</html>
 
 
 

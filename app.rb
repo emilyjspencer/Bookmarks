@@ -21,15 +21,24 @@ class BookmarkList < Sinatra::Base
       if user
         session[:user_id] = user.id
         redirect('/bookmarks')
+        flash[:success] = "Welcome, #{user.username}"
       else
         flash[:notice] = 'Incorrect login information. Please try again.'
-        redirect('/sessions/new')
+        redirect '/sessions/new'
       end
     end
 
-  get '/' do
-    "Save all of your favourite web pages!"
-  end 
+    post '/sessions/destroy' do
+      session.clear
+      flash[:notice] = 'You have been successfully signed out.'
+      redirect('/')
+    end
+
+   
+
+    get '/' do
+      erb(:"home/index")
+    end
 
   get '/bookmarks' do
     @bookmarks = Bookmark.all
