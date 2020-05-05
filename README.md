@@ -157,5 +157,11 @@ rspec
 * Capybara
 
 ### What it looks like:
+![homepage](homepage.png)
+![bookmarks](bookmarks.png)
+![edit](edit.png)
+![add](addbookmark.png)
+
+
 
 
