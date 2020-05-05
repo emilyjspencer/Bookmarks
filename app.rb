@@ -56,7 +56,7 @@ class BookmarkList < Sinatra::Base
   end
 
   patch '/bookmarks/:id' do
-    Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
+    Bookmark.edit(id: params[:id], title: params[:title], url: params[:url])
     redirect '/bookmarks'
   end 
 
